@@ -1,0 +1,13 @@
+[project]
+name = "flood-model-serving"
+version = "2.0.1+charm.standin"
+description = "CHARM PoC stand-in for Cooperators' internal flood_model_serving (I/O-shape replica, assumption A4)."
+requires-python = ">=3.10"
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/flood_model_serving"]

@@ -1,0 +1,90 @@
+[project]
+name = "cgl-dbx-flood-pipeline"
+version = "0.0.2"
+description = "Package for Flood Simulator scoring pipeline."
+authors = [
+    {name = "Alexandre Lepage", email = "alexandre_lepage@cooperators.ca"}
+]
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "click>=8.3.3,<9.0.0",
+    "typer>=0.16.0,<0.17.0",
+    "loguru>=0.7.3,<0.8.0",
+    "attrs==26.1.0",
+    "install-jdk>=1.1.0",
+    "apache-sedona>=1.9.0",
+    "shapely>=1.7.0",
+    "keplergl>=0.3.7",
+    "pydeck>=0.9.3",
+    "rasterio==1.5.1",
+    "pandas==3.0.5",
+    "ruff>=0.16.9",
+    "coop-dbx-toolkit>=1.4.0,<2.0.0",
+    "coop-dbx-unity-catalog-api>=1.3.0,<2.0.0",
+    "coop-dbx-control-framework>=1.0.0,<2.0.0",
+    "coop-dbx-data-quality-framework>=0.3.0,<2.0.0",
+    "coop-dbx-etl-library>=1.0.0,<2.0.0",
+]
+
+[project.scripts]
+cgl-dbx-flood-pipeline = "cgl_dbx_flood_pipeline.main:main"
+
+[dependency-groups]
+dev = [
+    "toml>=0.10.2,<0.11.0",
+    "pyyaml>=6.0.2,<7.0.0",
+    "certifi>=2025.1.31,<2026.0.0",
+    "pipdeptree==2.23.4",
+    "pytest>=9.0.3",
+    "pytest-cov>=6.0.0,<7.0.0",
+    "pytest-md-report==0.8.0",
+    "pytest-mock>=3.14.0,<4.0.0",
+    "coverage>=7.7.0,<8.0.0",
+    "pylint>=3.3.1,<4.0.0",
+    "autopep8>=2.3.2,<3.0.0",
+    "bandit>=1.8.0,<2.0.0",
+    "pip-audit>=2.9.0,<3.0.0",
+    "msgpack>=1.2.1,<2.0.0",
+    "mypy>=1.16.0,<2.0.0",
+    "databricks-connect>=17.3,<17.4",
+    "ipykernel>=6.29.5,<7.0.0",
+    "tornado>=6.5.8",
+    "pyasn1>=0.6.4",
+    "mistune>=3.3.3",
+    "cryptography>=50.0.0,<60.0.0",
+]
+
+[tool.poetry]
+requires-poetry = ">=2.0"
+
+[[tool.poetry.source]]
+name = "internal-index"
+url = "https://azure.artifactory.internal.cooperators.ca/artifactory/api/pypi/dataoffice-pypi/simple/"
+priority = "explicit"
+
+[tool.poetry.dependencies]
+coop-dbx-toolkit = {source = "internal-index"}
+coop-dbx-unity-catalog-api = {source = "internal-index"}
+coop-dbx-control-framework = {source = "internal-index"}
+coop-dbx-data-quality-framework = {source = "internal-index"}
+coop-dbx-etl-library = {source = "internal-index"}
+
+[tool.uv]
+package = true
+
+[[tool.uv.index]]
+name = "internal-index"
+url = "https://azure.artifactory.internal.cooperators.ca/artifactory/api/pypi/dataoffice-pypi/simple/"
+explicit = true
+
+[tool.uv.sources]
+coop-dbx-toolkit = {index = "internal-index"}
+coop-dbx-unity-catalog-api = {index = "internal-index"}
+coop-dbx-control-framework = {index = "internal-index"}
+coop-dbx-data-quality-framework = {index = "internal-index"}
+coop-dbx-etl-library = {index = "internal-index"}
+
+[build-system]
+requires = ["uv_build>=0.11.26,<0.12.0"]
+build-backend = "uv_build"
